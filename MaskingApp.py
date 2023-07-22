@@ -15,7 +15,7 @@ import uuid
 
 #------------------------------importing ends------------------------------
 
-favicon = Image.open("android-chrome-512x512.png")
+favicon = Image.open("logo-square-fgili.jpg")
 st.set_page_config(page_title='Aadhaar Masking Tool',page_icon = favicon, layout ="wide")  # Set app layout to wide mode
 logo_path = "fglogo.png"
 
