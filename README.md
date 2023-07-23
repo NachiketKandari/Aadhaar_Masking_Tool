@@ -4,7 +4,7 @@
 The Aadhaar Masking Tool is a Python application designed to mask sensitive information in Aadhaar documents from Future Generali India Life Insurance Company. It provides a user-friendly interface to process multiple tif files simultaneously and save the processed documents to a specified output directory. I have attatched a template of the application form to display how it redacts the image. I would encourage you to look around in the utils_og and have a look at the functions and what they do. Currently, this tool only works on Future Generali's handwritten applications since that is what it was designed for but I will update it as I work to expand its usability.
 
 ## Prerequisites
-Create a directory named `.streamlit` withing the present working directory and save the `config.toml` file there
+Create a directory named `.streamlit` withing the present working directory and save the `config.toml` file there.
 Before running the Aadhaar Masking Tool, ensure that you have the following software installed on your system:
 - Python (version 3.6 or above)
 - Tesseract (this has to be downloaded from https://github.com/UB-Mannheim/tesseract/wiki and added to PATH)
