@@ -25,6 +25,10 @@ To launch the Aadhaar Masking Tool, follow these steps:
 ```
 streamlit run MaskingApp.py
 ```
+Or run the follwing command to launch the version with the download button.
+```
+streamlit run MaskingDownload.py
+```
 
 ## Instructions
 Once the Aadhaar Masking Tool is running, you can perform the following steps:
