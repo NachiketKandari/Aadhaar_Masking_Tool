@@ -38,4 +38,12 @@ Once the Aadhaar Masking Tool is running, you can perform the following steps:
 3. The tool will create a file called `masking_output` in the specified output directory and save all the processed files there.
 
 Please note that the Aadhaar Masking Tool is designed to handle tif files specifically. Make sure the files you want to process are in the correct format.
-Furthermore, the intended look of the UI comes when streamlit is run using the LIGHT theme. 
+
+##IMAGES
+
+1. The image below shows the UI of MaskingApp.py and its performance with 19 multi-page tiff files.
+
+2. The image below shows the UI of MaskingDownload.py and its performance with 19 multi-page tiff files.
+
+3. The image below shows the UI of MaskingParallel.py and its performance with 19 multi-age tiff files.
+
