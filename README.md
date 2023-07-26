@@ -29,6 +29,10 @@ Or run the follwing command to launch the version with the download button.
 ```
 streamlit run MaskingDownload.py
 ```
+Or run the follwing command to launch the version with parallel processing.
+```
+streamlit run MaskingParallel.py
+```
 
 ## Instructions
 Once the Aadhaar Masking Tool is running, you can perform the following steps:
