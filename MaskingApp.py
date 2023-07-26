@@ -1,17 +1,9 @@
-import numpy as np
 from PIL import Image
-from PIL import ImageSequence
 from utils_og import process_image
-import sys, os, click, base64, shutil, base64 ,filetype, os
-import requests
+import os, shutil, os
 import streamlit as st
 import time
 import shutil
-import pathlib
-import base64
-from PIL import Image
-from io import BytesIO
-import uuid
 
 #------------------------------importing ends------------------------------
 
