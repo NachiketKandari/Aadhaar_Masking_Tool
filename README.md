@@ -42,8 +42,13 @@ Please note that the Aadhaar Masking Tool is designed to handle tif files specif
 ##IMAGES
 
 1. The image below shows the UI of MaskingApp.py and its performance with 19 multi-page tiff files.
+   
+  ![MaskingApp_Screenshot](https://github.com/NachiketKandari/Aadhaar_Masking_Tool/assets/73754119/de0804e5-3803-4746-b8e8-2c4276df295d)
 
 2. The image below shows the UI of MaskingDownload.py and its performance with 19 multi-page tiff files.
+   
+  ![MaskingDownload_Screenshot](https://github.com/NachiketKandari/Aadhaar_Masking_Tool/assets/73754119/b871e754-7bca-471a-a0bc-d7cd51541d5d)
 
 3. The image below shows the UI of MaskingParallel.py and its performance with 19 multi-age tiff files.
-
+   
+  ![MaskingParallel_Screenshot](https://github.com/NachiketKandari/Aadhaar_Masking_Tool/assets/73754119/fe535306-1be0-46db-ae66-087b6289b263)
