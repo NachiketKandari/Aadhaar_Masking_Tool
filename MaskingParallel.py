@@ -92,34 +92,76 @@ def redact_document(file_info):
 
     return redacted_files, success_count
 
+## Use this function if you want to use the faster (CPU heavy) parallel processing method
 
-def redact_documents(file_list, output_dir, progress_bar): 
-    # for redacting multiple documents using parallel processing
+# def redact_documents(file_list, output_dir, progress_bar): 
+#     # for redacting multiple documents using parallel processing
+#     redacted_files = []
+#     success_count = 0
+#     progress_text = st.empty()
+#     # Create a list of file information to pass to the redact_document function
+#     file_info_list = [(file, output_dir, i + 1) for i, file in enumerate(file_list)]
+#     total_files = len(file_info_list)
+
+#     with concurrent.futures.ProcessPoolExecutor() as executor:
+#         results = executor.map(redact_document, file_info_list)
+
+#         for i, result in enumerate(results):
+#             files, count = result
+#             redacted_files.extend(files)
+#             success_count += count
+            
+#             # Update progress
+#             progress = (i + 1) / total_files
+#             progress_bar.progress(progress)
+
+#             if total_files > 1:
+#                 progress_text.text(f"Processed {i + 1} out of {total_files} files")
+#             else:
+#                 progress_text.text(f"Processed {i + 1} out of {total_files} file")
+
+#     return redacted_files, success_count
+
+
+def redact_documents(file_list, output_dir, progress_bar, batch_size=10, batch_delay=0.5):
     redacted_files = []
     success_count = 0
     progress_text = st.empty()
+    
     # Create a list of file information to pass to the redact_document function
     file_info_list = [(file, output_dir, i + 1) for i, file in enumerate(file_list)]
     total_files = len(file_info_list)
 
-    with concurrent.futures.ProcessPoolExecutor() as executor:
-        results = executor.map(redact_document, file_info_list)
-
-        for i, result in enumerate(results):
-            files, count = result
-            redacted_files.extend(files)
-            success_count += count
+    # Calculate the optimal number of processes based on available CPU cores
+    max_processes = min(os.cpu_count(), total_files)
+    
+    with concurrent.futures.ProcessPoolExecutor(max_workers=max_processes) as executor:
+        # Batch the file_info_list for processing
+        for i in range(0, total_files, batch_size):
+            batch_files = file_info_list[i:i+batch_size]
             
-            # Update progress
-            progress = (i + 1) / total_files
-            progress_bar.progress(progress)
+            # Execute redact_document concurrently for each batch
+            results = executor.map(redact_document, batch_files)
 
-            if total_files > 1:
-                progress_text.text(f"Processed {i + 1} out of {total_files} files")
-            else:
-                progress_text.text(f"Processed {i + 1} out of {total_files} file")
+            for result in results:
+                files, count = result
+                redacted_files.extend(files)
+                success_count += count
+                
+                # Update progress
+                progress = len(redacted_files) / total_files
+                progress_bar.progress(progress)
+
+                if total_files > 1:
+                    progress_text.text(f"Processed {len(redacted_files)} out of {total_files} files")
+                else:
+                    progress_text.text(f"Processed {len(redacted_files)} out of {total_files} file")
+            
+            # Introduce a delay between batches to reduce CPU load
+            time.sleep(batch_delay)
 
     return redacted_files, success_count
+
 
 
 #------------------------------Funtion definition ends------------------------------
